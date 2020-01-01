@@ -53,5 +53,6 @@ module.exports={
                 inject:'body'
             }
         )
-    ]
+    ],
+    devtool:'cheap-eval-source-map'
 }
