@@ -1,5 +1,6 @@
 const path=require('path');
 const autoprefixer=require('autoprefixer');
+const htmlWebpackPlugin=require('html-webpack-plugin');
 module.exports={
 
     entry:{
@@ -37,7 +38,20 @@ module.exports={
                     }
                     
                 ]
+            },
+            {
+                test:/\.(png|jpe?g|gif)/,
+                loader:'url-loader'
             }
         ]
-    }
+    },
+    plugins:[
+        new htmlWebpackPlugin(
+            {
+                template:__dirname+'/index.html',
+                filename:'index.html',
+                inject:'body'
+            }
+        )
+    ]
 }
