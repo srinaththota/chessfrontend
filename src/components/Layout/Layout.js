@@ -10,12 +10,12 @@ const layout=()=>{
     return(
         <div>
         <div className={classes.hcontent}>
-            <Link className={classes.column1} to="/signin"  >SignIn</Link>
+            <Link className={classes.column1} to="/"  >SignIn</Link>
             <Link className={classes.column1} to="/dashboard"  >Dashboard</Link>
             <Link className={classes.column1} to="/newgame" >NewGame</Link>
         </div>
         <div className={classes.bcontent}>
-            <Route path="/signin" exact component={SignIn}/>
+            <Route path="/" exact component={SignIn}/>
             <Route path="/dashboard" exact component={Dashboard}/>
             <Route path="/newgame" exact component={NewGame}/>
         </div>
