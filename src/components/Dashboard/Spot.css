@@ -4,3 +4,8 @@
     height: 30px;
     position: sticky;
 }
+
+#h1:onclick {
+    width:70px;
+    height:74px;
+}
