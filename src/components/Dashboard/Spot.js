@@ -1,6 +1,8 @@
 import React , {Component} from 'react';
 
 import classes from './Spot.css';
+import * as actionTypes from '../../store/actions';
+import { connect } from 'react-redux';
 
 class Spot extends Component{    
  
@@ -63,5 +65,8 @@ class Spot extends Component{
 
     }
 
+    const mapDispatchToProps = dispatch => {
+        //onMovement=(move)=> dispatch({type:actionTypes.MOVE_PIECE,payload:move})
+    }
 
-export default Spot;
+export default connect(null,mapDispatchToProps)(Spot);
