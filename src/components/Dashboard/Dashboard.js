@@ -4,6 +4,8 @@ import classes from './Dashboard.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions';
 
+
+
 class Dashboard extends Component{
    state={
        boardStatus:[
@@ -447,6 +449,15 @@ class Dashboard extends Component{
        
    }
     render(){
+let boardFromStore='something';
+try{
+        if(this.props.brd.board!==null){
+            boardFromStore=this.props.brd.board;
+        }
+    }
+    catch(err){
+
+    }
         const sorteddata=this.state.boardStatus.sort(
             function(x,y){
                 if(y.horizontal-x.horizontal > 0){
@@ -488,7 +499,7 @@ class Dashboard extends Component{
                table.push(
                <div className={classes.bcontent}>
                 <Spot piece={this.state.boardStatus[j][i].piece}/>
-                {this.props.brd.board}
+                
                 </div>
                );
             }
@@ -496,12 +507,13 @@ class Dashboard extends Component{
         }
         
     }
+
         
         return(
             <div className={classes.spots}>
             
             {table}
-            
+            **{boardFromStore}**
             </div>
         );
     }
@@ -510,9 +522,9 @@ class Dashboard extends Component{
 const mapStateToProps = state => {
     return{
         brd:state
-    }
+    };
 }
 const mapDispatchToProps = dispatch => {
    // onStart=()=> dispatch({type:actionTypes.START_GAME })
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
