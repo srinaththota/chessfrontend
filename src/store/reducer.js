@@ -2,7 +2,9 @@ import * as actionTypes from './actions';
 
 const initialState={
     board:'nothing',
-    gamestatus:'start'
+    gamestatus:'start',
+    playerTurn:true,
+    movement:''
     
 }
 
@@ -12,7 +14,7 @@ const reducer=(state=initialState,action)=>{
         case actionTypes.MOVE_PIECE:
              return{
                  ...state,
-                 gamestatus:'whitewin'
+                 movement:action.value
             };
         case actionTypes.START_GAME:
             // return{

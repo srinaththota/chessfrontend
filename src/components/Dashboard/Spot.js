@@ -12,9 +12,10 @@ class Spot extends Component{
 
     captureCoordinate=()=>{
        
-        let move=this.state.moves;
+        let move=this.props.movepiece;
+        console.log("*********"+move);  
         
-        if(move.length < 2){
+        if(move.length < 4){
             move += 'i'+'j';
             
             this.setState(
@@ -24,16 +25,21 @@ class Spot extends Component{
                 }
             );
             console.log("get i and j values and "+move.length);
+            this.props.onMovement(move);
+            if(move.length === 4){
+                console.log("should send request");
+            }
         }
+        
         else{
            
             console.log("exceeded");
         }
         
-        if(move.length == 2){
-            this.props.onMovement(); 
-            return;
-        }
+    
+             
+
+        
        
         
     }
@@ -76,10 +82,15 @@ class Spot extends Component{
 
     }
 
+    const mapStateToProps = state =>{
+        return {
+            movepiece:state.movement
+        }
+    }
     const mapDispatchToProps = dispatch => {
         return{
-        onMovement:()=> dispatch({type:actionTypes.MOVE_PIECE})
+        onMovement:(coordinates)=> dispatch({type:actionTypes.MOVE_PIECE , value:coordinates})
         }
     }
 
-export default connect(null,mapDispatchToProps)(Spot);
+export default connect(mapStateToProps,mapDispatchToProps)(Spot);
