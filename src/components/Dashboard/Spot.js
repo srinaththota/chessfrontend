@@ -7,24 +7,35 @@ import { connect } from 'react-redux';
 class Spot extends Component{    
  
     state={
-        moves:[]
+        moves:''
     }
 
     captureCoordinate=()=>{
+       
+        let move=this.state.moves;
         
-        const move=this.state.moves;
-        move.push('i'+'j');
-        if(this.state.moves.length < 3){
-            console.log("get i and j values");
+        if(move.length < 2){
+            move += 'i'+'j';
+            
             this.setState(
                 {
-                    moves:move
+                    ...this.state,
+                    moves:  move        
                 }
             );
+            console.log("get i and j values and "+move.length);
         }
         else{
+           
             console.log("exceeded");
         }
+        
+        if(move.length == 2){
+            this.props.onMovement(); 
+            return;
+        }
+       
+        
     }
     render(){
 
@@ -66,7 +77,9 @@ class Spot extends Component{
     }
 
     const mapDispatchToProps = dispatch => {
-        //onMovement=(move)=> dispatch({type:actionTypes.MOVE_PIECE,payload:move})
+        return{
+        onMovement:()=> dispatch({type:actionTypes.MOVE_PIECE})
+        }
     }
 
 export default connect(null,mapDispatchToProps)(Spot);

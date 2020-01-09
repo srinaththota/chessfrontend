@@ -514,6 +514,7 @@ try{
             
             {table}
             **{boardFromStore}**
+            {this.props.brd.gamestatus}
             </div>
         );
     }
@@ -525,6 +526,6 @@ const mapStateToProps = state => {
     };
 }
 const mapDispatchToProps = dispatch => {
-   // onStart=()=> dispatch({type:actionTypes.START_GAME })
+    onStart:()=> dispatch({type:actionTypes.START_GAME })
 }
 export default connect(mapStateToProps)(Dashboard);
