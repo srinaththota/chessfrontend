@@ -1,0 +1,1 @@
+export const POST_MOVE='http://localhost:8080/movepiece';

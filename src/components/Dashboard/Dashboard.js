@@ -488,17 +488,20 @@ try{
         for(let j=0;j<8;j++){
             for(let i=0;i<8;i++){
             
-                if((j+i)%2===0){
+                if((j+i)%2===0){  // to give black and white colors to spots of the board
                     table.push(
                         <div className={classes.wcontent}>
                             
-                    <Spot piece={this.state.boardStatus[j][i].piece}/>
+                    <Spot piece={this.state.boardStatus[j][i]}/>
                 </div>
                 );
             }else{
                table.push(
                <div className={classes.bcontent}>
-                <Spot piece={this.state.boardStatus[j][i].piece}/>
+                   <Spot piece={this.state.boardStatus[j][i]}/>
+                {/*<Spot piece={this.state.boardStatus[j][i].piece}
+                 hor={this.state.boardStatus[j][i].horizontal}
+               vert={this.state.boardStatus[j][i].vertical}/>*/}
                 
                 </div>
                );
@@ -515,6 +518,7 @@ try{
             {table}
             **{boardFromStore}**
             {this.props.brd.gamestatus}
+            {this.props.brd.connection}
             </div>
         );
     }

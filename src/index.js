@@ -6,7 +6,7 @@ import { createStore , applyMiddleware ,combineReducers ,  compose} from 'redux'
 import reduxThunk from 'redux-thunk';
 
 import movePiece from './store/reducers/movepice';
-import resetGame from './store/reducers/resetgame';
+
 import App from './containers/App';
 
 const logger= store=>{
@@ -22,8 +22,8 @@ const logger= store=>{
 
 const rootReducer = combineReducers({
 
-    mpiece:movePiece,
-    reset:resetGame
+    mpiece:movePiece
+
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

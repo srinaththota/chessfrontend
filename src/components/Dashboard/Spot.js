@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 
 import classes from './Spot.css';
 import * as actionTypes from '../../store/actions/actionTypes';
-import  { movePiece } from '../../store/actions/movepice';
+import  { movePiece , sendMovements} from '../../store/actions/movepice';
 import { connect } from 'react-redux';
 
 class Spot extends Component{    
@@ -11,24 +11,25 @@ class Spot extends Component{
         moves:''
     }
 
-    captureCoordinate=()=>{
+    captureCoordinate=(hor,vert)=>{
        
         let move=this.props.movepiece;
-        console.log("*********"+move);  
+       
         
         if(move.length < 4){
-            move += 'i'+'j';
-            
+            move += hor+""+vert;
+            console.log("movement is ----->  "+move+"   movement length is-------> "+move.length);       
             this.setState(
                 {
                     ...this.state,
                     moves:  move        
                 }
             );
-            console.log("get i and j values and "+move.length);
-            this.props.onMovement(move);
+            
+           this.props.onMovement(move);
             if(move.length === 4){
-                console.log("should send request");
+                console.log("sendData method called");
+                this.props.sendData(move);
             }
         }
         
@@ -49,12 +50,25 @@ class Spot extends Component{
         let style=null;
         let name='-';
         let color=false;
+
+        let hor='';
+        let vert='';
         try{
-            name=this.props.piece.name
+            name=this.props.piece.piece.name
+            //console.log("name from parent component is    ----> "+name);
             color=this.props.piece.white
+        
+            //console.log("name from parent component is    ----> "+hor+""+vert);
         }
         catch(err){
 
+        }
+        try{
+            hor=this.props.piece.horizontal
+            vert=this.props.piece.vertical
+        }
+        catch(err){
+            
         }
         const styleWhite={
             color:'grey',
@@ -72,7 +86,7 @@ class Spot extends Component{
         }
         
     return(
-        <h1 style={style} onClick={this.captureCoordinate}>
+        <h1 style={style} onClick={this.captureCoordinate.bind(this,hor,vert)}>
             {name}
         </h1>
         
@@ -90,7 +104,8 @@ class Spot extends Component{
     }
     const mapDispatchToProps = dispatch => {
         return{
-        onMovement:(coordinates)=> dispatch(movePiece(coordinates))
+        onMovement:(coordinates)=> dispatch(movePiece(coordinates)),
+        sendData:(move)=> dispatch(sendMovements(move))
         }
     }
 

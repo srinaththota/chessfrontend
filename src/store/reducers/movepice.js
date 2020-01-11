@@ -1,8 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState={
-    playerTurn:true,
-    movement:''
+    gameStatus:'',
+    movement:'',
+    board:'',
+    connection:''
     
 }
 
@@ -14,6 +16,18 @@ const reducer=(state=initialState,action)=>{
                  ...state,
                  movement:action.spot
             };
+        case actionTypes.FAILED_CONNECTION:
+            return{
+                ...state,
+                connection:'Failed to connect server'
+            }
+            
+        case actionTypes.BOARD_STATUS:
+            return{
+                    ...state,
+                     board:action.boardStatus.spots,
+                    gameStatus:action.boardStatus.gameStatus
+                };
         default:
             return state;
     }
