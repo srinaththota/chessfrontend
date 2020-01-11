@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import Spot from './Spot';
 import classes from './Dashboard.css';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
 
 
 
@@ -528,4 +528,4 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     onStart:()=> dispatch({type:actionTypes.START_GAME })
 }
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

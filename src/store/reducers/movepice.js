@@ -1,8 +1,6 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState={
-    board:'nothing',
-    gamestatus:'start',
     playerTurn:true,
     movement:''
     
@@ -14,13 +12,8 @@ const reducer=(state=initialState,action)=>{
         case actionTypes.MOVE_PIECE:
              return{
                  ...state,
-                 movement:action.value
+                 movement:action.spot
             };
-        case actionTypes.START_GAME:
-            // return{
-            //     ...state,
-            //     board:board
-            // };
         default:
             return state;
     }

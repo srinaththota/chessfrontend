@@ -1,7 +1,8 @@
 import React , {Component} from 'react';
 
 import classes from './Spot.css';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/actionTypes';
+import  { movePiece } from '../../store/actions/movepice';
 import { connect } from 'react-redux';
 
 class Spot extends Component{    
@@ -84,12 +85,12 @@ class Spot extends Component{
 
     const mapStateToProps = state =>{
         return {
-            movepiece:state.movement
+            movepiece:state.mpiece.movement
         }
     }
     const mapDispatchToProps = dispatch => {
         return{
-        onMovement:(coordinates)=> dispatch({type:actionTypes.MOVE_PIECE , value:coordinates})
+        onMovement:(coordinates)=> dispatch(movePiece(coordinates))
         }
     }
 
