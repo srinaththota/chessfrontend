@@ -4,7 +4,7 @@ import classes from './Dashboard.css';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 
-
+import NewGame from '../../components/NewGame';
 
 class Dashboard extends Component{
    state={
@@ -541,6 +541,9 @@ let boardFromStore='';
             <div className={classes.spots}>
             
             {table}
+            <div>
+            <center><NewGame/></center>
+            </div>
             displaying game status from store**{this.props.gstat}**
             </div>
         );

@@ -4,15 +4,14 @@ import { startGame } from '../store/actions/movepice';
 class NewGame extends Component{
 
     onStartMeth=()=>{
-        console.log("method called");
-        
+        this.props.onStart();
     }
     componentDidMount(){
-        this.props.onStart();
+        
     }
     render(){
         return(
-            <h2 onClick={this.onStartMeth}>NewGame in comp</h2>
+            <button onClick={this.onStartMeth}>Click here reset the game</button>
         );
     }
 }

@@ -24,7 +24,7 @@ export const resetMovement=()=>{
 }
 export const sendMovements = (move) =>dispatch => {
     console.log("CHECKING MOVE TYPE "+move);
-   axios.post('http://localhost:8080/movepiece',move)
+   axios.post('http://18.130.162.245:8080/movepiece',move)
    .then(
        response =>{
         dispatch({
@@ -45,7 +45,7 @@ export const sendMovements = (move) =>dispatch => {
 
 export const startGame = () =>dispatch => {
     
-   axios.get('http://localhost:8080/startgame')
+   axios.get('http://18.130.162.245:8080/startgame')
    .then(
        response =>{
         dispatch({
