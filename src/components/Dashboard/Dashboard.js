@@ -8,7 +8,8 @@ import * as actionTypes from '../../store/actions/actionTypes';
 
 class Dashboard extends Component{
    state={
-       boardStatus:[
+       boardStatus:{
+           spots:[
         [
             {
                 "piece": {
@@ -446,31 +447,55 @@ class Dashboard extends Component{
             }
         ]
     ]
+       }
        
    }
     render(){
-let boardFromStore='something';
-try{
-        if(this.props.brd.board!==null){
-            boardFromStore=this.props.brd.board;
-        }
-    }
-    catch(err){
+let boardFromStore='';
 
-    }
-        const sorteddata=this.state.boardStatus.sort(
-            function(x,y){
-                if(y.horizontal-x.horizontal > 0){
-                    return 1;
-                }
-                else if(y.horizontal - x.horizontal < 0){
-                    return -1;
-                }
-                else{
-                    return y.vertical-x.vertical;
+        {
+            try{
+                if(this.props.brd){
+                console.log("inside state");
+                boardFromStore=this.props.brd;
+                console.log(boardFromStore);
+                }else{
+                    console.log("getting board status from state");
+                    boardFromStore= this.state.boardStatus.spots;
                 }
             }
-            );
+            catch(error){
+
+            }
+        }
+        
+        
+// try{
+//         if(this.props.brd.board!==null){
+//             console.log("defined board from store"+board.spots);
+//             boardFromStore=this.props.brd.board.spots;
+//         }
+//         else{
+//             console.log("in else part");
+//            
+//         }
+//     }
+//     catch(err){
+
+//     }
+        // const sorteddata=this.state.boardStatus.sort(
+        //     function(x,y){
+        //         if(y.horizontal-x.horizontal > 0){
+        //             return 1;
+        //         }
+        //         else if(y.horizontal - x.horizontal < 0){
+        //             return -1;
+        //         }
+        //         else{
+        //             return y.vertical-x.vertical;
+        //         }
+        //     }
+        //     );
             
         /*{
             "piece": {
@@ -492,13 +517,13 @@ try{
                     table.push(
                         <div className={classes.wcontent}>
                             
-                    <Spot piece={this.state.boardStatus[j][i]}/>
+                    <Spot piece={boardFromStore[j][i]}/>
                 </div>
                 );
             }else{
                table.push(
                <div className={classes.bcontent}>
-                   <Spot piece={this.state.boardStatus[j][i]}/>
+                   <Spot piece={boardFromStore[j][i]}/>
                 {/*<Spot piece={this.state.boardStatus[j][i].piece}
                  hor={this.state.boardStatus[j][i].horizontal}
                vert={this.state.boardStatus[j][i].vertical}/>*/}
@@ -516,9 +541,7 @@ try{
             <div className={classes.spots}>
             
             {table}
-            **{boardFromStore}**
-            {this.props.brd.gamestatus}
-            {this.props.brd.connection}
+            displaying game status from store**{this.props.gstat}**
             </div>
         );
     }
@@ -526,7 +549,8 @@ try{
 
 const mapStateToProps = state => {
     return{
-        brd:state
+        brd:state.mpiece.board,
+        gstat:state.mpiece.gameStatus
     };
 }
 const mapDispatchToProps = dispatch => {

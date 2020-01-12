@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState={
     gameStatus:'',
     movement:'',
-    board:'',
+    board:null,
     connection:''
     
 }
@@ -23,14 +23,36 @@ const reducer=(state=initialState,action)=>{
             }
             
         case actionTypes.BOARD_STATUS:
-            return{
+            console.log("  Logging board status infor  -->  "+action.boardStatus);
+            
+             return{
                     ...state,
-                     board:action.boardStatus.spots,
-                    gameStatus:action.boardStatus.gameStatus
-                };
+                    board:action.boardStatus.spots,
+                    gameStatus:action.boardStatus.gamestatus
+                    
+                 };
+                 
+        case actionTypes.RESET_MOVEMENT:
+            return{
+                ...state,
+                movement:''
+            }
         default:
             return state;
     }
 };
 
+// const boardState=(state,action)=>{
+//     switch(action.type){
+//     case actionTypes.BOARD_STATUS:
+//             console.log("  Logging board status infor  -->  "+action.boardStatus);
+            
+//              return{
+//                     ...state,
+//                      board:action.boardStatus,
+//                      gameStatus:action.boardStatus.gamestatus 
+                    
+//                  };
+//     }
+// }
 export default reducer;

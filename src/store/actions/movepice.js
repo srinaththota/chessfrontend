@@ -10,13 +10,18 @@ export const movePiece = (move)=>{
     }
 }
 
+
 export const connectionFailed = () =>{
 
     return{
         type:actionTypes.FAILED_CONNECTION
     }
 }
-
+export const resetMovement=()=>{
+    return{
+        type:actionTypes.RESET_MOVEMENT
+    }
+}
 export const sendMovements = (move) =>dispatch => {
     console.log("CHECKING MOVE TYPE "+move);
    axios.post('http://localhost:8080/movepiece',move)
@@ -38,3 +43,23 @@ export const sendMovements = (move) =>dispatch => {
    );
 }
 
+export const startGame = () =>dispatch => {
+    
+   axios.get('http://localhost:8080/startgame')
+   .then(
+       response =>{
+        dispatch({
+            type:actionTypes.BOARD_STATUS,
+            boardStatus:  response.data
+          })
+       }
+   ).catch( error =>{
+    dispatch(
+        {
+            type:actionTypes.FAILED_CONNECTION,
+            tryagain:'try again'
+        }
+    )
+   }
+   );
+}

@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 
 import classes from './Spot.css';
 import * as actionTypes from '../../store/actions/actionTypes';
-import  { movePiece , sendMovements} from '../../store/actions/movepice';
+import  { movePiece , sendMovements , resetMovement} from '../../store/actions/movepice';
 import { connect } from 'react-redux';
 
 class Spot extends Component{    
@@ -17,7 +17,7 @@ class Spot extends Component{
        
         
         if(move.length < 4){
-            move += hor+""+vert;
+            move = move+''+hor+''+vert;
             console.log("movement is ----->  "+move+"   movement length is-------> "+move.length);       
             this.setState(
                 {
@@ -30,6 +30,7 @@ class Spot extends Component{
             if(move.length === 4){
                 console.log("sendData method called");
                 this.props.sendData(move);
+                this.props.onResetMovement();
             }
         }
         
@@ -49,12 +50,14 @@ class Spot extends Component{
 
         let style=null;
         let name='-';
-        let color=false;
+        let color='';
+        let killed='';
 
         let hor='';
         let vert='';
         try{
             name=this.props.piece.piece.name
+            killed=this.props.piece.killed
             //console.log("name from parent component is    ----> "+name);
             color=this.props.piece.white
         
@@ -71,23 +74,25 @@ class Spot extends Component{
             
         }
         const styleWhite={
-            color:'grey',
+            color:'white',
             cursor:'cell'
         }
         const styleBlack={
             color:'black',
             cursor:'cell'
         }
-        if(color){
+        if(color==true){
             style=styleWhite
         }
         else{
             style=styleBlack
         }
-        
+        if(killed == true){
+            name='-'
+        }
     return(
         <h1 style={style} onClick={this.captureCoordinate.bind(this,hor,vert)}>
-            {name}
+            {name} 
         </h1>
         
             
@@ -105,7 +110,8 @@ class Spot extends Component{
     const mapDispatchToProps = dispatch => {
         return{
         onMovement:(coordinates)=> dispatch(movePiece(coordinates)),
-        sendData:(move)=> dispatch(sendMovements(move))
+        sendData:(move)=> dispatch(sendMovements(move)),
+        onResetMovement:()=>dispatch(resetMovement())
         }
     }
 

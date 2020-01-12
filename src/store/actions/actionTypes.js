@@ -1,5 +1,6 @@
 export const MOVE_PIECE='MOVE_PIECE';
 export const START_GAME='START_GAME';
 export const BOARD_STATUS='BOARD_STATUS';
+export const RESET_MOVEMENT='RESET_MOVEMENT';
 
 export const FAILED_CONNECTION = 'FAILED_CONNECTION';
