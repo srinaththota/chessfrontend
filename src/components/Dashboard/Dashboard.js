@@ -20,7 +20,10 @@ class Dashboard extends Component{
                 "vertical": 0
             },
             {
-                "piece": null,
+                "piece": {
+                    "name": "KNIGHT",
+                    "white": true
+                },
                 "horizontal": "a",
                 "vertical": 1
             },
@@ -153,10 +156,7 @@ class Dashboard extends Component{
                 "vertical": 1
             },
             {
-                "piece": {
-                    "name": "KNIGHT",
-                    "white": true
-                },
+                "piece": null,
                 "horizontal": "c",
                 "vertical": 2
             },

@@ -22,4 +22,12 @@ const mapDispatchToProps = dispatch => {
     onStart:()=> dispatch(startGame())
     }
 }
+
+// const mapDispatchToProps = dispatch => {
+//     return{
+//     onMovement:(coordinates)=> dispatch(movePiece(coordinates)),
+//     sendData:(move)=> dispatch(sendMovements(move)),
+//     onResetMovement:()=>dispatch(resetMovement())
+//     }
+// }
 export default connect(null,mapDispatchToProps)(NewGame);
