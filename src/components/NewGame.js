@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
 import { startGame } from '../store/actions/movepice';
+import classes from './NewGame.css';
 class NewGame extends Component{
 
     onStartMeth=()=>{
@@ -11,7 +12,7 @@ class NewGame extends Component{
     }
     render(){
         return(
-            <button onClick={this.onStartMeth}>Click here reset the game</button>
+            <button className={classes.buttonstyle} onClick={this.onStartMeth}>Click here reset the game</button>
         );
     }
 }

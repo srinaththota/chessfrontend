@@ -14,7 +14,8 @@ const reducer=(state=initialState,action)=>{
         case actionTypes.MOVE_PIECE:
              return{
                  ...state,
-                 movement:action.spot
+                 movement:action.spot,
+                 gameStatus:action.gamestatus
             };
         case actionTypes.FAILED_CONNECTION:
             return{
@@ -36,6 +37,12 @@ const reducer=(state=initialState,action)=>{
             return{
                 ...state,
                 movement:''
+            }
+            case actionTypes.START_GAME:
+            return{
+                ...state,
+                movement:'',
+                gameStatus:''
             }
         default:
             return state;

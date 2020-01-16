@@ -34,3 +34,8 @@
     border: .5px solid rgb(65, 62, 62);
     
 }
+
+.textstyle{
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+}

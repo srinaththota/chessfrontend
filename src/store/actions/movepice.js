@@ -23,7 +23,7 @@ export const resetMovement=()=>{
     }
 }
 export const sendMovements = (move) =>dispatch => {
-    console.log("CHECKING MOVE TYPE "+move);
+    
    axios.post('http://18.130.162.245:8080/movepiece',move)
    .then(
        response =>{

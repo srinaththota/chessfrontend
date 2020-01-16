@@ -4,7 +4,7 @@ import classes from './Layout.css';
 
 import SignIn  from '../../containers/SignIn';
 import Dashboard from '../Dashboard/Dashboard';
-import NewGame  from '../NewGame';
+
 
 const layout=()=>{
     return(

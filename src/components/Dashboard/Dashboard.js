@@ -470,43 +470,8 @@ let boardFromStore='';
         }
         
         
-// try{
-//         if(this.props.brd.board!==null){
-//             console.log("defined board from store"+board.spots);
-//             boardFromStore=this.props.brd.board.spots;
-//         }
-//         else{
-//             console.log("in else part");
-//            
-//         }
-//     }
-//     catch(err){
 
-//     }
-        // const sorteddata=this.state.boardStatus.sort(
-        //     function(x,y){
-        //         if(y.horizontal-x.horizontal > 0){
-        //             return 1;
-        //         }
-        //         else if(y.horizontal - x.horizontal < 0){
-        //             return -1;
-        //         }
-        //         else{
-        //             return y.vertical-x.vertical;
-        //         }
-        //     }
-        //     );
-            
-        /*{
-            "piece": {
-                "name": "ROOK",
-                "white": true
-            },
-            "horizontal": "a",
-            "vertical": 0
-        }*/
         
-        let chars=['a','b','c','d','e','f','g','h'];
         let table=[];
         let k=0;
         let l=0;
@@ -538,13 +503,16 @@ let boardFromStore='';
 
         
         return(
+            <div>
+                <span className={classes.textstyle}>displaying game status from store  {this.props.gstat}</span>
+                <div>
+           <center><NewGame/></center>
+            </div>
             <div className={classes.spots}>
             
             {table}
-            <div>
-            <center><NewGame/></center>
             </div>
-            displaying game status from store**{this.props.gstat}**
+            
             </div>
         );
     }

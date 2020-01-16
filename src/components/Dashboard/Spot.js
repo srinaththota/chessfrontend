@@ -18,7 +18,6 @@ class Spot extends Component{
         
         if(move.length < 4){
             move = move+''+hor+''+vert;
-            console.log("movement is ----->  "+move+"   movement length is-------> "+move.length);       
             this.setState(
                 {
                     ...this.state,
@@ -55,13 +54,12 @@ class Spot extends Component{
 
         let hor='';
         let vert='';
+        let imageN='';
         try{
             name=this.props.piece.piece.name
             killed=this.props.piece.killed
-            //console.log("name from parent component is    ----> "+name);
-            color=this.props.piece.white
-        
-            //console.log("name from parent component is    ----> "+hor+""+vert);
+            color=this.props.piece.piece.white
+            
         }
         catch(err){
 
@@ -74,7 +72,7 @@ class Spot extends Component{
             
         }
         const styleWhite={
-            color:'white',
+            color:'grey',
             cursor:'cell'
         }
         const styleBlack={
@@ -92,7 +90,7 @@ class Spot extends Component{
         }
     return(
         <h1 style={style} onClick={this.captureCoordinate.bind(this,hor,vert)}>
-            {name} 
+          {name}
         </h1>
         
             
